@@ -47,7 +47,7 @@ function App() {
   }
 
   return (
-    <Card className="flex w-md m-auto ">
+    <Card className="flex m-auto ">
       <CardContent>
         <form
           onSubmit={handleSubmit}

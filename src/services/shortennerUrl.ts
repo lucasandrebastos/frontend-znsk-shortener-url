@@ -1,14 +1,17 @@
 async function shortenner(url: string) {
   try {
-    const response = await fetch("http://localhost:8080/shorten", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        originalUrl: url,
-      }),
-    });
+    const response = await fetch(
+      "https://znsk-shortener-url.onrender.com/shorten",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          originalUrl: url,
+        }),
+      }
+    );
 
     const data = await response.text();
     return data;
