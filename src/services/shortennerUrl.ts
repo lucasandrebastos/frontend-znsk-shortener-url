@@ -1,7 +1,7 @@
-async function shortenner(url: string) {
+async function shortenner(url: string, expires: string) {
   try {
     const response = await fetch(
-      "https://znsk-shortener-url.onrender.com/shorten",
+      "https://znsk-shortener-url-production.up.railway.app/shorten",
       {
         method: "POST",
         headers: {
@@ -9,6 +9,7 @@ async function shortenner(url: string) {
         },
         body: JSON.stringify({
           originalUrl: url,
+          expires: expires,
         }),
       }
     );
