@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-import { ToastContainer, toast } from "react-toastify";
 import shortenner from "./services/shortennerUrl";
 
 export default function UrlShortener() {
@@ -23,16 +21,6 @@ export default function UrlShortener() {
     try {
       new URL(originalUrl);
     } catch (e) {
-      toast.error("Please enter a valid URL including http:// or https://", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
       return;
     }
 
@@ -44,28 +32,8 @@ export default function UrlShortener() {
       setShortenedUrl(data);
       console.log(shortenedUrl);
     } catch (error) {
-      toast.error("Failed to shorten URL. Please try again.", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
     } finally {
       setIsLoading(false);
-      toast.success("URL shorten!!", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
     }
   };
 
@@ -73,16 +41,6 @@ export default function UrlShortener() {
     if (shortenedUrl) {
       navigator.clipboard.writeText(shortenedUrl);
       setIsCopied(true);
-      toast.success("Copied to clipboard!", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
 
       setTimeout(() => {
         setIsCopied(false);
@@ -98,7 +56,6 @@ export default function UrlShortener() {
 
   return (
     <div className="flex items-center justify-center min-h-screen py-8">
-      <ToastContainer />
       <div className="w-full max-w-md rounded-lg border bg-white shadow-sm">
         <div className="flex flex-col space-y-1.5 p-6">
           <h3 className="text-2xl font-semibold leading-none tracking-tight flex items-center gap-2">
